@@ -1,0 +1,42 @@
+{
+  "name": "initai-cli",
+  "version": "0.0.1",
+  "description": "Init.ai command line developer tools",
+  "private": true,
+  "main": "./programs/index",
+  "scripts": {
+    "lint": "eslint . --ignore-pattern '/test' --ignore-pattern '/node_modules' -c .eslintrc --fix",
+    "test": "npm run lint && NODE_ENV=test mocha ./test --recursive",
+    "test:watch": "npm t -- --watch",
+    "dev:server": "nodemon ./programs/iai-server",
+    "deploy:production": "./tasks/deploy",
+    "install:cml": "./tasks/install_cml"
+  },
+  "bin": {
+    "iai": "./programs/index"
+  },
+  "author": "init.ai",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "2.9.0",
+    "emune": "^1.0.0",
+    "fs-extra": "0.30.0",
+    "localhost.daplie.com-certificates": "^1.2.0",
+    "lodash.isfunction": "^3.0.8",
+    "natural": "0.4.0",
+    "restify": "4.0.4",
+    "socket.io": "1.4.6",
+    "walk": "2.3.9"
+  },
+  "devDependencies": {
+    "babel-eslint": "6.0.4",
+    "chai": "3.5.0",
+    "eslint": "2.9.0",
+    "mocha": "2.4.5",
+    "nodemon": "^1.9.2",
+    "sinon": "1.17.4",
+    "sinon-chai": "2.8.0"
+  },
+  "cmlVersion": "0.0.1"
+}

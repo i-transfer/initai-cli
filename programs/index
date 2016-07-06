@@ -1,0 +1,26 @@
+#! /usr/bin/env node
+
+const program = require('commander')
+
+const pkg = require('../package.json')
+const logger = require('../lib/logger')
+const handleInvalidArguments = require('../lib/handleInvalidArguments')
+
+program
+  .version(pkg.version)
+  .usage('<cmd> [action|options]')
+  .command('server', 'Start the local development server')
+  .on('--help', () => {
+    logger.logHelp({
+      message: [
+        '  Examples:',
+        '',
+        '    $ iai server',
+      ].join('\n')
+    })
+  })
+  .parse(process.argv)
+
+if (!program.runningCommand) {
+  console.log(handleInvalidArguments(program.args))
+}

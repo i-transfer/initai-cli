@@ -1,0 +1,23 @@
+#! /usr/bin/env node
+
+const commander = require('commander')
+const Server = require('./server/Server')
+
+// Handle program init
+commander
+  .arguments('<cmd> [setting]')
+  .usage('<cmd> [settings...]')
+  .on('--help', function () {
+    logger.logHelp({
+      message: [
+        '  Examples:',
+        '',
+        '    $ iai server',
+        ''
+      ].join('\n')
+    });
+  })
+  .parse(process.argv)
+
+// Run program
+new Server()
