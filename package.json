@@ -1,6 +1,6 @@
 {
   "name": "initai-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Init.ai command line developer tools",
   "private": true,
   "main": "./programs/index",

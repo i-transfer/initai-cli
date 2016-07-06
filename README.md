@@ -12,7 +12,7 @@ $ nvm use 4.3.2
 ```
 
 ```bash
-$ npm i -g git+ssh://git@github.com/init-ai/cli.git#latest
+$ npm i -g git+ssh://git@github.com/init-ai/initai-cli.git
 ```
 
 Installing this CLI globally will make the `iai` namespeace available to you from the command line.
