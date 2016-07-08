@@ -1,6 +1,6 @@
 {
   "name": "initai-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Init.ai command line developer tools",
   "private": true,
   "main": "./programs/index",
@@ -26,6 +26,7 @@
     "lodash.isfunction": "^3.0.8",
     "natural": "0.4.0",
     "restify": "4.0.4",
+    "rollbar": "0.6.2",
     "socket.io": "1.4.6",
     "walk": "2.3.9"
   },

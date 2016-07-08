@@ -1,6 +1,9 @@
 #! /usr/bin/env node
 
+const chalk = require('chalk')
 const commander = require('commander')
+
+const logger = require('../lib/logger')
 const Server = require('./server/Server')
 
 // Handle program init
@@ -8,14 +11,13 @@ commander
   .arguments('<cmd> [setting]')
   .usage('<cmd> [settings...]')
   .on('--help', function () {
-    logger.logHelp({
-      message: [
-        '  Examples:',
+    logger.print(
+      [
+        chalk.gray('Examples:'),
         '',
-        '    $ iai server',
-        ''
-      ].join('\n')
-    });
+        ' $ iai server',
+      ].join('\n') + logger.getCommonAppendix()
+    )
   })
   .parse(process.argv)
 

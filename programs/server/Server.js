@@ -4,6 +4,8 @@ const restify = require('restify')
 const socketio = require('socket.io')
 
 const constants = require('../../lib/constants')
+const logger = require('../../lib/logger')
+
 const convertJSONtoCML = require('./lib/convertJSONtoCML')
 const getConversationData = require('./lib/getConversationData')
 const saveCML = require('./lib/saveCML')
@@ -99,7 +101,7 @@ class Server {
 
   startHTTPServer() {
     this.httpServer.listen(port, () => {
-      console.log('%s listening at %s', this.httpServer.name, this.httpServer.url)
+      logger.log(`${this.httpServer.name} running at ${this.httpServer.url}`)
     })
   }
 }

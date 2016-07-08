@@ -3,6 +3,7 @@
 const fs = require('fs')
 const isFunction = require('lodash.isfunction')
 const constants = require('../../lib/constants')
+const logger = require('../../lib/logger')
 const getConversationData = require('./lib/getConversationData')
 const convertJSONtoCML = require('./lib/convertJSONtoCML')
 
@@ -10,9 +11,8 @@ const SocketEvents = constants.SocketEvents
 
 class SocketApp {
   constructor(options) {
-    if (process.env.NODE_ENV !== constants.Environments.TEST) {
-      console.log('[Socket Connection]')
-    }
+    logger.log('Socket connection established')
+
     this.socket = options.socket
     this.attachEvents()
     this.watchForChanges()
@@ -25,7 +25,7 @@ class SocketApp {
   }
 
   handleDisconnect() {
-    console.log('Socket disconnected')
+    logger.log('Socket disconnected')
   }
 
   handleRequestConversationData(reply) {
@@ -57,8 +57,12 @@ class SocketApp {
 
       // TODO Handle error
       // watcher.on('error', () => {})
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        logger.logWarning('It appears you may not be in an Init.ai project repository. Make sure to run the CLI from the appropraite directory.')
+      } else {
+        logger.logError(error)
+      }
     }
   }
 }
