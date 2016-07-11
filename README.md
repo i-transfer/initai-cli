@@ -36,7 +36,7 @@ The conversation training server acts as a bridge between your production consol
 To run the server, make sure you are in the directory of your working project (`cd /path/to/my-project`) and run the `server` command:
 
 ```bash
-$ iai server
+$ iai watch
 ```
 
 You will notice the console will reflect successful connection status immediately. You can of course, at any time, kill this server and the browser will no longer have access to any locally running codebase.
@@ -133,8 +133,8 @@ The command patterns look like this:
 $ iai <program>
 ```
 
-### server
+### watch
 
 ```bash
-$ iai server
+$ iai watch
 ```

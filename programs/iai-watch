@@ -1,0 +1,25 @@
+#! /usr/bin/env node
+
+const chalk = require('chalk')
+const commander = require('commander')
+
+const logger = require('../lib/logger')
+const Server = require('./server/Server')
+
+// Handle program init
+commander
+  .arguments('<cmd> [setting]')
+  .usage('<cmd> [settings...]')
+  .on('--help', function () {
+    logger.print(
+      [
+        chalk.gray('Examples:'),
+        '',
+        ' $ iai watch',
+      ].join('\n') + logger.getCommonAppendix()
+    )
+  })
+  .parse(process.argv)
+
+// Run program
+new Server()

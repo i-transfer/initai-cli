@@ -18,13 +18,13 @@ const logLevel = parsedArgs.logLevel
 program
   .version(pkg.version)
   .usage('<cmd> [action|options]')
-  .command('server', 'Start the Conversation Testing Server')
+  .command('watch', 'Start the Conversation Testing Server')
   .on('--help', () => {
     logger.print(
       [
         chalk.gray('Examples:'),
         '',
-        ' $ iai server',
+        ' $ iai watch',
       ].join('\n') + logger.getCommonAppendix()
     )
   })
