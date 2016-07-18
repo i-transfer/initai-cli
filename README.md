@@ -2,6 +2,8 @@
 
 A suite of tools for developing Projects on the [init.ai](https://init.ai) platform.
 
+> **Note:** This CLI is currently an alpha release and subject to change at any time.
+
 ## Installation
 
 Make sure you have Node.js installed. We recommend using version [`4.3.2`](https://nodejs.org/en/download/releases/) (see below). If you are using a tool such as [`nvm`](https://github.com/creationix/nvm) simply run:
@@ -12,8 +14,10 @@ $ nvm use 4.3.2
 ```
 
 ```bash
-$ npm i -g git+ssh://git@github.com/init-ai/initai-cli.git
+$ npm i -g initai-cli
 ```
+
+If you are not using `nvm`, you may need to run the previous command with `sudo`.
 
 Installing this CLI globally will make the `iai` namespeace available to you from the command line.
 
@@ -60,7 +64,7 @@ $ iai
 
 * Mac OS X 10.10+
 
-> Although the CLI may run on Windows and Linux, it is still under active development for those paltforms.
+> The CLI will not properly function on Windows and Linux right now. Support for those platforms is still under development.
 
 
 <br />
@@ -92,7 +96,7 @@ $ npm run dev:server
 ### Installing/updating CML version
 
 1. Update the `cmlVersion` field in `package.json`
-2. Run `npm run install:cml`
+2. Run `./tasks/install_cml`
 
 #### Socket events
 

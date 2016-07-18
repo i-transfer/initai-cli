@@ -1,29 +1,26 @@
 {
   "name": "initai-cli",
-  "version": "0.0.4",
-  "description": "Init.ai command line developer tools",
-  "private": true,
+  "version": "0.0.5",
+  "description": "A suite of developer tools for creating Init.ai projects.",
   "main": "./programs/index",
   "scripts": {
     "lint": "eslint . --ignore-pattern '/test' --ignore-pattern '/node_modules' -c .eslintrc --fix",
     "test": "npm run lint && NODE_ENV=test mocha ./test --recursive",
     "test:watch": "npm t -- --watch",
-    "dev:server": "nodemon ./programs/iai-watch",
-    "deploy:production": "./tasks/deploy",
-    "install:cml": "./tasks/install_cml"
+    "watch": "./programs/iai-watch"
   },
   "bin": {
     "iai": "./programs/index"
   },
-  "author": "init.ai",
-  "license": "UNLICENSED",
+  "author": "Init.ai Developers <shared@init.ai>",
+  "license": "ISC",
   "dependencies": {
-    "chalk": "^1.1.3",
+    "chalk": "1.1.3",
     "commander": "2.9.0",
-    "emune": "^1.0.0",
+    "emune": "1.0.0",
     "fs-extra": "0.30.0",
-    "localhost.daplie.com-certificates": "^1.2.0",
-    "lodash.isfunction": "^3.0.8",
+    "localhost.daplie.com-certificates": "1.2.0",
+    "lodash.isfunction": "3.0.8",
     "natural": "0.4.0",
     "restify": "4.0.4",
     "rollbar": "0.6.2",
@@ -35,7 +32,6 @@
     "chai": "3.5.0",
     "eslint": "2.9.0",
     "mocha": "2.4.5",
-    "nodemon": "^1.9.2",
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0"
   },
