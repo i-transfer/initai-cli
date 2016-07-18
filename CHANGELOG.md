@@ -1,3 +1,9 @@
+0.0.6 / 2016-07-18
+==================
+
+* Remove internal development steps from README
+* Add `repository` field to `package.json`
+
 0.0.5 / 2016-07-18
 ==================
 

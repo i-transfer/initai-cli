@@ -1,6 +1,6 @@
 {
   "name": "initai-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A suite of developer tools for creating Init.ai projects.",
   "main": "./programs/index",
   "scripts": {
@@ -13,7 +13,11 @@
     "iai": "./programs/index"
   },
   "author": "Init.ai Developers <shared@init.ai>",
-  "license": "ISC",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:init-ai/initai-cli"
+  },
   "dependencies": {
     "chalk": "1.1.3",
     "commander": "2.9.0",
