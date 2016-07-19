@@ -17,9 +17,17 @@ $ nvm use 4.3.2
 $ npm i -g initai-cli
 ```
 
-If you are not using `nvm`, you may need to run the previous command with `sudo`.
+Installing this CLI globally will make the `iai` namespeace available to you from the command line. If you, however would prefer to not install this package globally, you may install it in your current project and run it as follows:
 
-Installing this CLI globally will make the `iai` namespeace available to you from the command line.
+```
+# On Mac
+
+node ./node_modules/initai-cli/programs/iai-watch
+
+# On Windows
+
+node .\node_modules\initai-cli\programs\iai-watch
+```
 
 > **Note:** It is recommended that you use Node.js version 4.3.2 to ensure you are running the same version of Node that is available in [AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html). While the developer tools do not _currently_ interact with or represent Lambda, upcoming features will require this version.
 
@@ -63,5 +71,6 @@ $ iai
 ## Supported Platforms
 
 * Mac OS X 10.10+
+* Windows 8.1+
 
-> The CLI will not properly function on Windows and Linux right now. Support for those platforms is still under development.
+> **Note:** Linux support is still in active development.

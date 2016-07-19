@@ -7,7 +7,7 @@ const stream = require('stream')
 const constants = require('../../../lib/constants')
 
 module.exports = (payload, done) => {
-  const cmlBinary = path.resolve(__dirname, '../../../', 'bin', 'cml')
+  const cmlBinary = path.resolve(__dirname, '../../../', 'bin', constants.CML_BINARY)
   const cml = childProcess.spawn(cmlBinary, ['--json-to-cml'])
   const content = []
   const error = []

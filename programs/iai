@@ -1,0 +1,35 @@
+#! /usr/bin/env node
+
+'use strict'
+
+const chalk = require('chalk')
+const program = require('commander')
+
+require('../lib/rollbar')
+const pkg = require('../package.json')
+const logger = require('../lib/logger')
+const handleInvalidArguments = require('../lib/handleInvalidArguments')
+const parseLogLevelFromArgs = require('../lib/parseLogLevelFromArgs')
+
+const parsedArgs = parseLogLevelFromArgs(process.argv)
+const filteredArgs = parsedArgs.filteredArgs
+const logLevel = parsedArgs.logLevel
+
+program
+  .version(pkg.version)
+  .usage('<cmd> [action|options]')
+  .command('watch', 'Start the Conversation Testing Server')
+  .on('--help', () => {
+    logger.print(
+      [
+        chalk.gray('Examples:'),
+        '',
+        ' $ iai watch',
+      ].join('\n') + logger.getCommonAppendix()
+    )
+  })
+  .parse(filteredArgs)
+
+if (!program.runningCommand) {
+  logger.print(handleInvalidArguments(program.args))
+}

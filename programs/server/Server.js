@@ -75,11 +75,11 @@ class Server {
       })
     })
 
-    this.httpServer.del(constants.PATH_REGEX, require('./handlers/delete'))
-    this.httpServer.get(constants.PATH_REGEX, require('./handlers/get'))
-    this.httpServer.head(constants.PATH_REGEX, require('./handlers/get'))
+    this.httpServer.del(constants.URL_PATH_REGEX, require('./handlers/delete'))
+    this.httpServer.get(constants.URL_PATH_REGEX, require('./handlers/get'))
+    this.httpServer.head(constants.URL_PATH_REGEX, require('./handlers/get'))
 
-    this.httpServer.put(constants.PATH_REGEX, (request, response) => {
+    this.httpServer.put(constants.URL_PATH_REGEX, (request, response) => {
       convertJSONtoCML(request.body, (err, data) => {
         if (err) {
           response.send(err.status || 500, {

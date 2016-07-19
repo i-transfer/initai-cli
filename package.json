@@ -1,16 +1,16 @@
 {
   "name": "initai-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A suite of developer tools for creating Init.ai projects.",
-  "main": "./programs/index",
+  "main": "./programs/iai",
   "scripts": {
     "lint": "eslint . --ignore-pattern '/test' --ignore-pattern '/node_modules' -c .eslintrc --fix",
     "test": "npm run lint && NODE_ENV=test mocha ./test --recursive",
     "test:watch": "npm t -- --watch",
-    "watch": "./programs/iai-watch"
+    "watch": "./programs/iai"
   },
   "bin": {
-    "iai": "./programs/index"
+    "iai": "./programs/iai"
   },
   "author": "Init.ai Developers <shared@init.ai>",
   "license": "UNLICENSED",
@@ -26,7 +26,7 @@
     "localhost.daplie.com-certificates": "1.2.0",
     "lodash.isfunction": "3.0.8",
     "natural": "0.4.0",
-    "restify": "4.0.4",
+    "restify": "4.1.1",
     "rollbar": "0.6.2",
     "socket.io": "1.4.6",
     "walk": "2.3.9"

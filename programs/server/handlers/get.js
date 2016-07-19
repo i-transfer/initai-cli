@@ -10,7 +10,7 @@ module.exports = (request, response) => {
   const filePath = constants.PATH_PREFIX + request.params[0]
   const stream = fs.createReadStream(filePath)
   const cml = childProcess.spawn(
-    path.resolve(__dirname, '../../../', 'bin', 'cml')
+    path.resolve(__dirname, '../../../', 'bin', constants.CML_BINARY)
   )
   const content = []
   const error = []

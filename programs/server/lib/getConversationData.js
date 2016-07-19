@@ -1,3 +1,5 @@
+'use strict'
+
 const childProcess = require('child_process')
 const fs = require('fs')
 const path = require('path')
@@ -14,10 +16,10 @@ module.exports = done => {
 
   walker.on('file', (root, stat, next) => {
     const filename = path.join(root, stat.name)
-    const name = constants.PATH_REGEX.exec('/' + filename)[1]
+    const name = constants.FILE_PATH_REGEX.exec('/' + filename)[1]
     const stream = fs.createReadStream(filename)
     const cml = childProcess.spawn(
-      path.resolve(__dirname, '../../../', 'bin', 'cml')
+      path.resolve(__dirname, '../../../', 'bin', constants.CML_BINARY)
     )
     const content = []
     const error = []
