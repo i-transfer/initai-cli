@@ -6,6 +6,8 @@ const commander = require('commander')
 const logger = require('../lib/logger')
 const Server = require('./server/Server')
 
+const nodeVersion = process.versions.node
+
 // Handle program init
 commander
   .arguments('<cmd> [setting]')
@@ -20,6 +22,17 @@ commander
     )
   })
   .parse(process.argv)
+
+if (nodeVersion !== '4.3.2') {
+  logger.logClean('\n')
+  logger.logClean(chalk.yellow('-----------------------------------------------------------'))
+  logger.logClean(chalk.yellow.bold('WARNING!'), 'You are not using Node.js version', chalk.blue.bold('4.3.2'))
+  logger.logClean(chalk.gray('\nCurrent detected version:'), chalk.yellow.bold(`${nodeVersion}`))
+  logger.logClean('\n')
+  logger.logClean('See docs:', chalk.blue.underline('http://alphadocs.init.ai/reference/cli.html'))
+  logger.logClean(chalk.yellow('-----------------------------------------------------------'))
+  logger.logClean('\n')
+}
 
 // Run program
 new Server()

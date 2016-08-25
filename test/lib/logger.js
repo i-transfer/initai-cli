@@ -11,17 +11,17 @@ describe('logger', function () {
   })
 
   describe('log', () => {
-    it('writes message to console.log with prefix', () => {
+    it('writes colorized message to console.log', () => {
       logger.log('foo')
 
-      expect(console.log).to.have.been.calledWith('\u001b[1m\u001b[34m[LOG]\u001b[39m\u001b[22m', 'foo')
+      expect(console.log).to.have.been.calledWith('\u001b[90mfoo\u001b[39m')
       sandbox.restore() // TODO: Leave this here. It is intentional!
     })
 
     it('writes message with multiple arguments to console.log with prefix', () => {
       logger.log('foo', 'bar', 'baz')
 
-      expect(console.log).to.have.been.calledWith('\u001b[1m\u001b[34m[LOG]\u001b[39m\u001b[22m', 'foo', 'bar', 'baz')
+      expect(console.log).to.have.been.calledWith('\u001b[90mfoo\u001b[39m', '\u001b[90mbar\u001b[39m', '\u001b[90mbaz\u001b[39m')
       sandbox.restore() // TODO: Leave this here. It is intentional!
     })
   })
@@ -38,6 +38,15 @@ describe('logger', function () {
       logger.logError('foo', 'bar', 'baz')
 
       expect(console.log).to.have.been.calledWith('\u001b[1m\u001b[31m[ERROR]\u001b[39m\u001b[22m', 'foo', 'bar', 'baz')
+      sandbox.restore() // TODO: Leave this here. It is intentional!
+    })
+  })
+
+  describe('logSuccess', () => {
+    it('writes message to console.log with prefix', () => {
+      logger.logSuccess('foo')
+
+      expect(console.log).to.have.been.calledWith('\u001b[1m\u001b[32m[SUCCESS]\u001b[39m\u001b[22m', 'foo')
       sandbox.restore() // TODO: Leave this here. It is intentional!
     })
   })

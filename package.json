@@ -1,11 +1,12 @@
 {
   "name": "initai-cli",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "A suite of developer tools for creating Init.ai projects.",
   "main": "./programs/iai",
   "scripts": {
     "lint": "eslint . --ignore-pattern '/test' --ignore-pattern '/node_modules' -c .eslintrc --fix",
     "test": "npm run lint && NODE_ENV=test mocha ./test --recursive",
+    "mocha": "mocha ./test --recursive",
     "test:watch": "npm t -- --watch",
     "watch": "./programs/iai"
   },
@@ -23,9 +24,13 @@
     "commander": "2.9.0",
     "emune": "1.0.0",
     "fs-extra": "0.30.0",
+    "json-stringify-pretty-compact": "1.0.1",
     "localhost.daplie.com-certificates": "1.2.0",
     "lodash.isfunction": "3.0.8",
+    "log-prefix": "0.0.0",
     "natural": "0.4.0",
+    "pusher-js": "^3.1.0",
+    "request": "2.74.0",
     "restify": "4.1.1",
     "rollbar": "0.6.2",
     "socket.io": "1.4.6",
