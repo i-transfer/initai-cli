@@ -2,8 +2,8 @@
 
 const conversations = require('../../../programs/server/conversations')
 
-describe('extractClassificationsFrom', () => {
-  const classification = (baseType, subType, style) => {
+describe('extractClassifications', () => {
+  const generateClassification = (baseType, subType, style) => {
     return {
       base_type: {
         value: baseType,
@@ -19,39 +19,184 @@ describe('extractClassificationsFrom', () => {
 
   it('extracts classifications from a conversation', () => {
     const conversation = {
-      messages: [{
-        parts: [{
-          classifications: [
-            classification('a', 'b', 'c'),
-            classification('1', '2', '3'),
-          ],
-        }, {
-          classifications: [
-            classification('x', 'y', 'z'),
-            classification('7', '8', '9'),
-          ],
-        }],
-      }, {
-        parts: [{
-          classifications: [
-            classification('a', 'b', 'c'),
-            classification('q', 'r', 's'),
-            classification('x', 'y', 'z'),
-          ],
-        }],
-      }],
+      messages: [
+        {
+          sender: 'app',
+          parts: [{
+            classifications: [
+              generateClassification('a', 'b', 'c'),
+              generateClassification('1', '2', '3'),
+            ],
+          }, {
+            classifications: [
+              generateClassification('x', 'y', 'z'),
+              generateClassification('7', '8', '9'),
+            ],
+          }],
+        },
+        {
+          sender: 'user',
+          parts: [{
+            classifications: [
+              generateClassification('a', 'b', 'c'),
+              generateClassification('q', 'r', 's'),
+              generateClassification('x', 'y', 'z'),
+            ],
+          }],
+        }
+      ],
     }
 
-    const result = conversations.extractClassificationsFrom([conversation])
+    const result = conversations.extractClassifications([conversation])
 
-    expect(result.length).to.equal(5)
-    expect(result).to.deep.have.members([
-      classification('1', '2', '3'),
-      classification('7', '8', '9'),
-      classification('a', 'b', 'c'),
-      classification('q', 'r', 's'),
-      classification('x', 'y', 'z'),
-    ])
+    expect(result).to.deep.equal({
+      inbound: [
+        {
+          base_type: {value: 'a'},
+          sub_type: {value: 'b'},
+          style: {value: 'c'},
+        },
+        {
+          base_type: {value: 'q'},
+          sub_type: {value: 'r'},
+          style: {value: 's'},
+        },
+        {
+          base_type: {value: 'x'},
+          sub_type: {value: 'y'},
+          style: {value: 'z'},
+        },
+      ],
+      outbound: [
+        {
+          base_type: {value: 'a'},
+          sub_type: {value: 'b'},
+          style: {value: 'c'},
+        },
+        {
+          base_type: {value: '1'},
+          sub_type: {value: '2'},
+          style: {value: '3'},
+        },
+        {
+          base_type: {value: 'x'},
+          sub_type: {value: 'y'},
+          style: {value: 'z'},
+        },
+        {
+          base_type: {value: '7'},
+          sub_type: {value: '8'},
+          style: {value: '9'},
+        },
+      ],
+    })
+  })
+
+  it('extracts and dedupes classifications', () => {
+    const conversation = {
+      messages: [
+        {
+          sender: 'app',
+          parts: [{
+            classifications: [
+              generateClassification('a', 'b', 'c'),
+              generateClassification('1', '2', '3'),
+            ],
+          }, {
+            classifications: [
+              generateClassification('x', 'y', 'z'),
+              generateClassification('7', '8', '9'),
+            ],
+          }],
+        },
+        {
+          sender: 'user',
+          parts: [{
+            classifications: [
+              generateClassification('a', 'b', 'c'),
+              generateClassification('q', 'r', 's'),
+              generateClassification('x', 'y', 'z'),
+            ],
+          }],
+        },
+        {
+          sender: 'app',
+          parts: [{
+            classifications: [
+              generateClassification('foo', 'bar', 'baz'),
+            ],
+          }, {
+            classifications: [
+              generateClassification('foo', 'bar', 'baz'),
+              generateClassification('x', 'y', 'z'),
+            ]
+          }]
+        },
+        {
+          sender: 'user',
+          parts: [{
+            classifications: [
+              generateClassification('q', 'r', 's'),
+              generateClassification('qux', 'quux', 'corge'),
+            ],
+          }],
+        },
+      ],
+    }
+
+    const result = conversations.extractClassifications([conversation])
+
+    expect(result).to.deep.equal({
+      inbound: [
+        {
+          base_type: {value: 'a'},
+          sub_type: {value: 'b'},
+          style: {value: 'c'},
+        },
+        {
+          base_type: {value: 'q'},
+          sub_type: {value: 'r'},
+          style: {value: 's'},
+        },
+        {
+          base_type: {value: 'x'},
+          sub_type: {value: 'y'},
+          style: {value: 'z'},
+        },
+        {
+          base_type: {value: 'qux'},
+          sub_type: {value: 'quux'},
+          style: {value: 'corge'},
+        },
+      ],
+      outbound: [
+        {
+          base_type: {value: 'a'},
+          sub_type: {value: 'b'},
+          style: {value: 'c'},
+        },
+        {
+          base_type: {value: '1'},
+          sub_type: {value: '2'},
+          style: {value: '3'},
+        },
+        {
+          base_type: {value: 'x'},
+          sub_type: {value: 'y'},
+          style: {value: 'z'},
+        },
+        {
+          base_type: {value: '7'},
+          sub_type: {value: '8'},
+          style: {value: '9'},
+        },
+        {
+          base_type: {value: 'foo'},
+          sub_type: {value: 'bar'},
+          style: {value: 'baz'},
+        },
+      ],
+    })
   })
 })
 

@@ -65,6 +65,7 @@ describe('getConversationData', () => {
         .callsArgWith(1, new Buffer(JSON.stringify({
           conversation_name: 'Test',
           messages: [{
+            sender: 'user',
             parts: [{
               classifications: [{
                 base_type: 'string',
@@ -85,15 +86,19 @@ describe('getConversationData', () => {
     getConversationData((err, data) => {
       expect(err).to.equal(null)
       expect(data).to.deep.equal({
-        classifications: [{
-          base_type: 'string',
-          sub_type: 'hello',
-          style: '',
-        }],
+        classifications: {
+          inbound: [{
+            base_type: 'string',
+            sub_type: 'hello',
+            style: '',
+          }],
+          outbound: [],
+        },
         conversations: [{
           conversation_name: 'Test',
           filename: 'test.md',
           messages: [{
+            sender: 'user',
             parts: [{
               classifications: [{
                 base_type: 'string',

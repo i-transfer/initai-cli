@@ -1,3 +1,7 @@
+# 0.2.0 / 2016-08-31
+
+* Remodel classifications to be grouped by direction
+
 # 0.1.0 / 2016-08-25
 
 * Introduce ability to execute business logic locally via CLI

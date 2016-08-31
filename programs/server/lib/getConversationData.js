@@ -79,7 +79,7 @@ module.exports = done => {
   walker.once('end', () => {
     done(null, {
       conversations: files,
-      classifications: conversations.extractClassificationsFrom(files),
+      classifications: conversations.extractClassifications(files),
       slots: conversations.extractSlotsFrom(files),
     })
   })
