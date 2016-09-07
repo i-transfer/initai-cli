@@ -1,6 +1,6 @@
 {
   "name": "initai-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A suite of developer tools for creating Init.ai projects.",
   "main": "./programs/iai",
   "scripts": {

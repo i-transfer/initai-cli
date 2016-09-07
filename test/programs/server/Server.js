@@ -107,7 +107,7 @@ describe('Server', () => {
 
       expect(fakeSocketServer.set).to.have.been.calledWith(
         'origins',
-        'http://localhost:*, http://s-csi.init.ai.s3-website-us-east-1.amazonaws.com:*, https://p-csi.init.ai:*'
+        'http://localhost:*, http://s-csi.init.ai.s3-website-us-east-1.amazonaws.com:*, https://p-csi.init.ai:*, https://csi.init.ai:*'
       )
     })
 

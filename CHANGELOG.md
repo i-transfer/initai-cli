@@ -1,3 +1,7 @@
+# 0.2.1 / 2016-09-07
+
+* Update production domain whitelist
+
 # 0.2.0 / 2016-08-31
 
 * Remodel classifications to be grouped by direction

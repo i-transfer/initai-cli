@@ -41,7 +41,7 @@ describe('LocalExecutionTester', () => {
 
       expect(tester.appId).to.equal(fakeConfig.appId)
       expect(tester.appUserId).to.equal(fakeConfig.testAppUser.id)
-      expect(tester.apiBaseUrl).to.equal('https://p-api.init.ai/api/v1')
+      expect(tester.apiBaseUrl).to.equal('https://api.init.ai/api/v1')
       expect(tester.jwtToken).to.equal(fakeConfig.jwtToken)
       expect(tester.projectSourcePath).to.equal(fakeConfig.projectSourcePath)
       expect(tester.channel).to.equal(null)
