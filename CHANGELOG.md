@@ -1,3 +1,7 @@
+# 0.2.2 / 2016-09-08
+
+* Update Docs url
+
 # 0.2.1 / 2016-09-07
 
 * Update production domain whitelist
