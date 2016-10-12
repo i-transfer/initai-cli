@@ -71,7 +71,7 @@ class SocketApp {
       // watcher.on('error', () => {})
     } catch (error) {
       if (error.code === 'ENOENT') {
-        logger.logWarning('It appears you may not be in an Init.ai project repository. Make sure to run the CLI from the appropraite directory.')
+        logger.logWarning('It appears you may not be in an Init.ai project repository. Make sure to run the CLI from the appropriate directory.')
       } else {
         logger.logError(error)
       }

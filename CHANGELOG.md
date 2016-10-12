@@ -1,3 +1,9 @@
+# 0.3.0 / 2016-10-12
+
+* Downgrades internal development API to HTTP
+* Fixes typo (see [public PR](https://github.com/init-ai/initai-cli/pull/1))
+* Include Linux build
+
 # 0.2.2 / 2016-09-08
 
 * Update Docs url

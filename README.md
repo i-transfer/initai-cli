@@ -4,6 +4,14 @@ A suite of tools for developing Projects on the [init.ai](https://init.ai) platf
 
 > **Note:** This CLI is currently an alpha release and subject to change at any time.
 
+## Pull Requests and Contributions
+
+At the current time, this project is not developed openly on Github. We hope to change that soon, but in the meantime, any PRs will have to be reviewed and manually applied by Init.ai team members.
+
+We will provide a list of contributors and make sure to acknowledge all feedback we receive.
+
+> **Note:** Currently, this project is not distributed under a permissive open source license. Contributions will be accepted with the understanding that they become part of our IP. This is likely to change in the future and we will update this repository accordingly at that time.
+
 ## Installation
 
 Make sure you have Node.js installed. We recommend using version [`4.3.2`](https://nodejs.org/en/download/releases/) (see below). If you are using a tool such as [`nvm`](https://github.com/creationix/nvm) simply run:
@@ -72,5 +80,4 @@ $ iai
 
 * Mac OS X 10.10+
 * Windows 8.1+
-
-> **Note:** Linux support is still in active development.
+* Linux
